@@ -2,6 +2,11 @@
 
 A minimal Spring Boot ledger. Transactions are kept in an in-memory list, so the state resets on restart.
 
+## Prerequisites
+
+- Java 25+
+- Maven 3+
+
 ## Run
 
 ```bash

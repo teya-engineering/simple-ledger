@@ -1,6 +1,6 @@
 package com.example.ledger;
 
-public record Transaction(Type type, int amount, int balanceAfter) {
+public record Transaction(Type type, int amount) {
 
     public enum Type {
         DEPOSIT,

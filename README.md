@@ -23,7 +23,7 @@ App starts on `http://localhost:8080`.
 | POST   | `/withdraw`     | `{"amount": 30}`  | Take money. Fails if over balance.   |
 | GET    | `/transactions` | -                 | List all transactions in order.      |
 
-Each transaction returns its `type`, `amount`, and the `balanceAfter` it produced.
+Each transaction returns its `type` and `amount`.
 
 ## Examples
 

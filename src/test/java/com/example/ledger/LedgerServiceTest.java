@@ -30,7 +30,7 @@ class LedgerServiceTest {
         Transaction transaction = ledger.withdraw(30);
 
         assertThat(transaction.type()).isEqualTo(Transaction.Type.WITHDRAW);
-        assertThat(transaction.balanceAfter()).isEqualTo(70);
+        assertThat(transaction.amount()).isEqualTo(30);
         assertThat(ledger.balance()).isEqualTo(70);
     }
 

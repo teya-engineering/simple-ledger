@@ -8,26 +8,27 @@ import org.springframework.stereotype.Service;
 public class LedgerService {
 
     private final List<Transaction> transactions = new ArrayList<>();
+    private int balance;
 
     public synchronized Transaction deposit(int amount) {
-        int balance = balance() + amount;
-        Transaction transaction = new Transaction(Transaction.Type.DEPOSIT, amount, balance);
+        balance += amount;
+        Transaction transaction = new Transaction(Transaction.Type.DEPOSIT, amount);
         transactions.add(transaction);
         return transaction;
     }
 
     public synchronized Transaction withdraw(int amount) {
-        int balance = balance();
         if (amount > balance) {
             throw new InsufficientFundsException(amount, balance);
         }
-        Transaction transaction = new Transaction(Transaction.Type.WITHDRAW, amount, balance - amount);
+        balance -= amount;
+        Transaction transaction = new Transaction(Transaction.Type.WITHDRAW, amount);
         transactions.add(transaction);
         return transaction;
     }
 
     public synchronized int balance() {
-        return transactions.isEmpty() ? 0 : transactions.getLast().balanceAfter();
+        return balance;
     }
 
     public synchronized List<Transaction> transactions() {
